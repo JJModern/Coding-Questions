@@ -36,6 +36,8 @@ def tour(euler_tour, node, level):
 def map_indices(indices, euler_tour):
     for i, item in enumerate(euler_tour):
         indices[item[0]] = indices.get(item[0], []) + [i]
+    
+    # A: [1, 3], B : [2, 6] || get(B, []) => [2] + [6] => [2, 6]
 
 def map_prefix_suffix(prefix_max, suffix_max, euler_tour):
     max_ind = len(euler_tour) - 1
@@ -62,6 +64,7 @@ class Solution(object):
         """
         euler_tour = []
         indices = {}    
+        #{A: [0, 8], B[1, 3]}
         
         tour(euler_tour, root, 0)
 
