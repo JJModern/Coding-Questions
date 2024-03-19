@@ -1,0 +1,25 @@
+import sys
+
+f = sys.stdin.read().splitlines()
+f = [list(map(int, item.split())) for item in f]
+
+@lru_cache
+def dp(sublist, start, end):
+    length = end - start + 1
+    if length < 2:
+        return False
+    elif length == 2:
+        return sublist[start] == sublist[end]
+
+for sublist in f[2::2]:
+    sublist.sort(reverse=True)
+    print(sublist)
+
+    if dp(sublist, 0, len(sublist) - 1):
+        print("YES")
+    else:
+        print("NO")
+
+    #dp 
+
+

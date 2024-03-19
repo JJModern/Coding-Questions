@@ -1,19 +1,44 @@
 import sys
 
 f = sys.stdin.read().splitlines()
+f = [list(map(int, item.split())) for item in f]
 
-test_cases = int(f[0])
+# when string
+f = [item.split() for item in f]
 
 
-# each time. therefore should be diff indices
-vertical_strips = int(f[1])
-# dictionary or list?
-preferences = 0
-# hideous number
-# number of combinations
+sys.setrecursionlimit(10**6)
 
-print(vertical_strips)
+from functools import lru_cache
 
-# return
-# total number of non-hideous possibilities
-# favorite combination
+@lru_cache
+def rec():
+    print("hi")
+
+# C++ template
+# g++ -std=c++17 acpcd.cpp -o acpcd
+# ./acpcd
+    
+#include <iostream>
+#include <vector>
+#include <utility>
+    
+# int main() {
+# }
+
+#include <cctype>
+    # std::isalpha()
+    # isalpha()
+    # toupper()
+    # tolower()
+    # isxdigit()
+    # isupper()
+    # isspace()
+    # ispunct()
+    # islower()
+    # isdigit()
+    # isblank()
+    # isalpha()
+
+#include <unordered_set>
+    # std::unordered_set<int> myset;

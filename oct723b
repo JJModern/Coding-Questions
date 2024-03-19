@@ -1,0 +1,11 @@
+import sys
+
+f = sys.stdin.read().splitlines()
+
+myset = set(list("codeforces"))
+
+for char in f[1:]:
+    if char in myset:
+        print("YES")
+    else:
+        print("NO")

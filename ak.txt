@@ -1,0 +1,119 @@
+#!/bin/python3
+
+import math
+import os
+import random
+import re
+import sys
+
+
+
+#
+# Complete the 'getNetProfit' function below.
+#
+# The function is expected to return a LONG_INTEGER_ARRAY.
+# The function accepts STRING_ARRAY events as parameter.
+#
+
+def getNetProfit(events):
+    # Write your code here
+    money = 0
+    prices = dict()
+    # stock name : [price, quantity]
+    return_query = []
+    for event in events:
+        event = event.split()
+        
+        if event[0] == "BUY":
+            curr_lst = prices.get(event[1], [0, 0]) 
+            curr_lst[1] += int(event[2])
+            prices[event[1]] = curr_lst
+            print(prices)
+        elif event[0] == "SELL":
+            curr_lst = prices.get(event[1], [0, 0]) 
+            money += curr_lst[1] * int(event[2])
+            curr_lst[1] -= int(event[2])
+            if curr_lst[1] == 0:
+                curr_lst[0] = 0
+            print(prices)
+        elif event[0] == "CHANGE":
+            curr_lst = prices.get(event[1], [0, 0]) 
+            curr_lst[0] += int(event[2])
+            print(prices)
+        else:
+            return_query += [money]
+            print(prices)
+           
+        
+    return return_query
+
+
+if __name__ == '__main__':
+    fptr = open(os.environ['OUTPUT_PATH'], 'w')
+
+    events_count = int(input().strip())
+
+    events = []
+
+    for _ in range(events_count):
+        events_item = input()
+        events.append(events_item)
+
+    result = getNetProfit(events)
+
+    fptr.write('\n'.join(map(str, result)))
+    fptr.write('\n')
+
+    fptr.close()
+
+
+6
+BUY stock2 2
+BUY stock1 4
+CHANGE stock2 -8
+SELL stock1 2
+BUY stock3 3
+QUERY\
+
+def makePairsWithSameSum(numbers, num_pairs):
+    total_sum = sum(numbers)
+    
+    # Check if it's possible to create pairs with the given sum
+    if total_sum % num_pairs != 0:
+        return None
+    
+    target_sum = total_sum // num_pairs
+    numbers.sort(reverse=True)
+    
+    pairs = []
+    while numbers:
+        num1 = numbers[0]
+        num2 = target_sum - num1
+        
+        if num2 in numbers:
+            pairs.append([num1, num2])
+            numbers.remove(num1)
+            numbers.remove(num2)
+        else:
+            return None
+    
+    return pairs
+
+# Example usage:
+numbers = [1, 2, 3, 4, 5, 6]
+num_pairs = 2
+result = makePairsWithSameSum(numbers, num_pairs)
+print(result)
+
+
+Expected Output
+
+Download
+-16
+Debug output
+{'stock2': [0, 2]}
+{'stock2': [0, 2], 'stock1': [0, 4]}
+{'stock2': [-8, 2], 'stock1': [0, 4]}
+{'stock2': [-8, 2], 'stock1': [0, 2]}
+{'stock2': [-8, 2], 'stock1': [0, 2], 'stock3': [0, 3]}
+{'stock2': [-8, 2], 'stock1': [0, 2], 'stock3': [0, 3]}
