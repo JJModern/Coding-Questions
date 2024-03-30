@@ -16,7 +16,7 @@ def rec():
     print("hi")
 
 # C++ template
-# g++ -std=c++17 acpcd.cpp -o acpcd
+# g++ -std=c++17 hihi.cpp -o hihi
 # ./acpcd
     
 #include <iostream>
