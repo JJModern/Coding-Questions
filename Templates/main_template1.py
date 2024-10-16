@@ -1,5 +1,6 @@
 import sys
 
+n = int(input())
 f = sys.stdin.read().splitlines()
 f = [list(map(int, item.split())) for item in f]
 
